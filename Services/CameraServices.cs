@@ -6,14 +6,26 @@ using System;
 
 namespace CameraAPI.Services
 {
+    /// <summary>
+    /// Classe responsável pela interface com a câmera.
+    /// </summary>
     public class CameraService
-    {
+    {   
+            
         private static readonly Lazy<CameraService> _instance = new Lazy<CameraService>(() => new CameraService());
+        
+        /// <summary>
+        /// No comments.
+        /// </summary> 
         public static CameraService Instance => _instance.Value;
 
         private ThermalCamera Camera;
 
-        // Conecta à câmera térmica
+        /// <summary>
+        /// Conecta a câmera térmica ao sistema.
+        /// </summary>
+        /// <param name="ipAddress">O endereço IP da câmera.</param>
+        /// <returns>Mensagem de sucesso ou erro.</returns>
         public void Connect(string ipAddress)
         {
             Disconnect();
@@ -31,7 +43,10 @@ namespace CameraAPI.Services
             }
         }
 
-        // Desconecta a câmera
+        /// <summary>
+        /// Desconecta a câmera térmica.
+        /// </summary>
+        /// <returns>Mensagem de sucesso ou erro.</returns>
         public void Disconnect()
         {
             if (Camera != null)
@@ -43,7 +58,11 @@ namespace CameraAPI.Services
             }
         }
 
-        // Captura uma imagem e salva no caminho especificado
+        /// <summary>
+        /// Salva a imagem atual da câmera térmica.
+        /// </summary>
+        /// /// <param name="savePath">O caminho onde será salvo a imagem.</param>
+        /// <returns>Mensagem de sucesso ou erro.</returns>o
         public void CaptureImage(string savePath)
         {
             if (Camera == null)
@@ -64,7 +83,9 @@ namespace CameraAPI.Services
             }
         }
 
-        // Ajusta o foco automático
+        /// <summary>
+        /// Faz a calibração automática do foco da câmera.
+        /// </summary>
         public void SetAutoFocus()
         {
             if (Camera != null && Camera.RemoteControl != null)
@@ -78,7 +99,9 @@ namespace CameraAPI.Services
             }
         }
 
-        // Obtém o status da câmera
+        /// <summary>
+        /// Obtém o status da câmera térmica.
+        /// </summary>
         public string GetStatus()
         {
             return Camera != null && Camera.IsConnected ? "Conectada" : "Desconectada";

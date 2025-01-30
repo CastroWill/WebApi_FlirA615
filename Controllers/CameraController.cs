@@ -4,11 +4,19 @@ using CameraAPI.Services;
 
 namespace CameraAPI.Controller
 {
+    /// <summary>
+    /// Controlador responsável pelo gerenciamento da câmera térmica.
+    /// </summary>
     [RoutePrefix("api/camera")]
     public class CameraController : ApiController
     {
         private readonly CameraService _cameraService = CameraService.Instance;
 
+        /// <summary>
+        /// Conecta a câmera térmica ao sistema.
+        /// </summary>
+        /// <param name="ipAddress">O endereço IP da câmera.</param>
+        /// <returns>Mensagem de sucesso ou erro.</returns>
         [HttpPost]
         [Route("connect")]
         public IHttpActionResult Connect([FromBody] string ipAddress)
@@ -24,6 +32,11 @@ namespace CameraAPI.Controller
             }
         }
 
+
+        /// <summary>
+        /// Desconecta a câmera térmica.
+        /// </summary>
+        /// <returns>Mensagem de sucesso ou erro.</returns>
         [HttpPost]
         [Route("disconnect")]
         public IHttpActionResult Disconnect()
@@ -39,6 +52,11 @@ namespace CameraAPI.Controller
             }
         }
 
+        /// <summary>
+        /// Salva a imagem atual da câmera térmica.
+        /// </summary>
+        /// /// <param name="savePath">O caminho onde será salvo a imagem.</param>
+        /// <returns>Mensagem de sucesso ou erro.</returns>
         [HttpPost]
         [Route("capture")]
         public IHttpActionResult CaptureImage([FromBody] string savePath)
@@ -54,6 +72,9 @@ namespace CameraAPI.Controller
             }
         }
 
+        /// <summary>
+        /// Faz a calibração automática do foco da câmera.
+        /// </summary>
         [HttpPost]
         [Route("autoFocus")]
         public IHttpActionResult AutoFocus()
@@ -69,6 +90,9 @@ namespace CameraAPI.Controller
             }
         }
 
+        /// <summary>
+        /// Obtém o status da câmera térmica.
+        /// </summary>
         [HttpGet]
         [Route("status")]
         public IHttpActionResult GetStatus()

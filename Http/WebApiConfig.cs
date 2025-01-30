@@ -3,8 +3,14 @@ using Swashbuckle.Application;
 
 namespace CameraAPI.Http
 {
+    /// <summary>
+    /// Classe responsável pela criação da Web Api.
+    /// </summary>
     public static class WebApiConfig
     {
+        /// <summary>
+        /// Método responsável pela configuração das rotas e do Swagger.
+        /// </summary>
         public static void Register(HttpConfiguration config)
         {
             // Configuração de rotas

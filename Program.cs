@@ -2,8 +2,14 @@
 
 namespace CameraAPI
 {
+    /// <summary>
+    /// Classe responsável por todo o fluxo de inicialização.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Método principal.
+        /// </summary>
         public static void Main(string[] args)
         {
             Console.WriteLine("Inicializando o servidor Web API...");
